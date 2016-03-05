@@ -1,5 +1,7 @@
-var http = require('http').createServer(servidor);
+var http = require('http');
 var fs = require('fs');
+
+var server = http.createServer(servidor);
 
 function servidor(requisicao, resposta){
 	var gplay = require('google-play-scraper');
@@ -30,6 +32,7 @@ function servidor(requisicao, resposta){
 
 };
 
-http.listen(5000, function(){
+var porta = Number(process.env.PORT || 3000);
+server.listen(porta, function(){
   console.log("Servidor On-line");
 });
